@@ -1,10 +1,10 @@
 import "./App.css";
-import MovingBox from "./MovingBox";
+import Clock from "./Clock";
 
 function App() {
   return (
     <div className="App">
-      <MovingBox />
+      <Clock />
     </div>
   );
 }
