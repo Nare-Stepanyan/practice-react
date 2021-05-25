@@ -1,10 +1,15 @@
 import "./App.css";
-import Clock from "./Clock";
+import React from "react";
+import { Provider } from "react-redux";
+import CounterComponent from "./containers/CounterComponent";
+import store from "./store";
 
 function App() {
   return (
     <div className="App">
-      <Clock />
+      <Provider store={store}>
+        <CounterComponent />
+      </Provider>
     </div>
   );
 }
