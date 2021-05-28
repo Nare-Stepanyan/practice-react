@@ -16,6 +16,15 @@ function CounterReducer(state = initialState, action) {
     case "ADD_COUNT": {
       return { ...state, ...action };
     }
+    case "MINUS_COUNT": {
+      return { ...state, ...action };
+    }
+    case "MULT_COUNT": {
+      return { ...state, ...action };
+    }
+    case "SUBTR_COUNT": {
+      return { ...state, ...action };
+    }
     default:
       return state;
   }

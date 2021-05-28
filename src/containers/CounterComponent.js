@@ -6,6 +6,9 @@ import {
   decrementCount,
   resetCount,
   addCount,
+  minusCount,
+  multCount,
+  subtrCount,
 } from "../actions/index";
 
 function getRandomColor() {
@@ -42,6 +45,27 @@ class CounterComponent extends Component {
       value: 0,
     });
   };
+  handleMinus = () => {
+    this.setState({ color: getRandomColor() });
+    this.props.onMinusCount(this.props.count, this.state.value);
+    this.setState({
+      value: 0,
+    });
+  };
+  handleMult = () => {
+    this.setState({ color: getRandomColor() });
+    this.props.onMultCount(this.props.count, this.state.value);
+    this.setState({
+      value: 0,
+    });
+  };
+  handleSubtr = () => {
+    this.setState({ color: getRandomColor() });
+    this.props.onSubtrCount(this.props.count, this.state.value);
+    this.setState({
+      value: 0,
+    });
+  };
   handleChange = (e) => {
     let value = e.target.value;
     this.setState({
@@ -53,7 +77,7 @@ class CounterComponent extends Component {
     const { count } = this.props;
     return (
       <div>
-        <h1 style={{ color: this.state.color }}>Count: {count}</h1>
+        <h1 style={{ color: this.state.color }}>COUNT: {count}</h1>
         <div className="input">
           <input
             type="text"
@@ -62,9 +86,16 @@ class CounterComponent extends Component {
           />
         </div>
         <div className="buttons">
-          <Button action={this.handleBtnActionIncrement} buttonTitle="+" />
-          <Button action={this.handleBtnActionDecrement} buttonTitle="-" />
-          <Button action={this.handleAdd} buttonTitle="add" />
+          <div className="incr-decr">
+            <Button action={this.handleBtnActionIncrement} buttonTitle="+1" />
+            <Button action={this.handleBtnActionDecrement} buttonTitle="-1" />
+          </div>
+          <div className="oper">
+            <Button action={this.handleAdd} buttonTitle="+" />
+            <Button action={this.handleMinus} buttonTitle="-" />
+            <Button action={this.handleMult} buttonTitle="x" />
+            <Button action={this.handleSubtr} buttonTitle="/" />
+          </div>
           <Button action={this.handleReset} buttonTitle="reset" />
         </div>
       </div>
@@ -91,6 +122,15 @@ const mapDispatchToProps = (dispatch) => {
     },
     onAddCount: (count, val) => {
       dispatch(addCount(count, val));
+    },
+    onMinusCount: (count, val) => {
+      dispatch(minusCount(count, val));
+    },
+    onMultCount: (count, val) => {
+      dispatch(multCount(count, val));
+    },
+    onSubtrCount: (count, val) => {
+      dispatch(subtrCount(count, val));
     },
   };
 };
